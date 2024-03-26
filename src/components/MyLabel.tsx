@@ -1,6 +1,6 @@
 import './MyLabel.css';
 
-interface Props {
+export interface LabelProps {
     /**
      * Text to display
      */
@@ -29,7 +29,7 @@ export const MyLabel = ({
     fontColor = '#333',
     label,
     size = 'normal',
-}: Props) => (
+}: LabelProps) => (
     <span
         style={{
             color: fontColor,

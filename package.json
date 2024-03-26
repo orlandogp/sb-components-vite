@@ -1,21 +1,45 @@
 {
-    "name": "03-my-storybook",
-    "private": true,
-    "version": "0.0.0",
+    "name": "custom-components-og",
+    "private": false,
+    "version": "0.0.1-rc3",
     "type": "module",
+    "main": "dist/index.js",
+    "typings": "dist/index.d.ts",
     "scripts": {
         "dev": "yarn storybook",
-        "build": "yarn build-storybook -o docs",
+        "build": "yarn clean && tsc && yarn copyfiles",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
+        "clean": "rimraf dist/",
+        "copyfiles": "copyfiles -u 1 src/**/*.css dist/",
         "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build",
+        "build-storybook": "storybook build -o docs",
         "chromatic": "npx chromatic --project-token=chpt_44166e73e26c83f"
     },
-    "dependencies": {
+    "keywords": [
+        "react",
+        "dev"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/orlandogp/sb-components-vite"
+    },
+    "files": [
+        "dist/"
+    ],
+    "release": {
+        "branches": [
+            "main"
+        ]
+    },
+    "peerDependencies": {
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
+    "engines": {
+        "node": "^20"
+    },
+    "license": "MIT",
     "devDependencies": {
         "@chromatic-com/storybook": "1.2.25",
         "@storybook/addon-essentials": "^8.0.4",
@@ -32,10 +56,14 @@
         "@typescript-eslint/parser": "^7.2.0",
         "@vitejs/plugin-react-swc": "^3.5.0",
         "chromatic": "^11.2.0",
+        "copyfiles": "^2.4.1",
         "eslint": "^8.57.0",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.6",
         "eslint-plugin-storybook": "^0.8.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "rimraf": "^5.0.5",
         "storybook": "^8.0.4",
         "typescript": "^5.2.2",
         "vite": "^5.2.0"
